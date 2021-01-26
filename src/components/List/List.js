@@ -3,27 +3,52 @@ import styles from './List.scss';
 import Hero from '../Hero/Hero.js'
 import Column from '../Column/Column.js'
 import PropTypes from 'prop-types';
+import {settings} from '../../data/dataStore';
+import ReactHtmlParser from 'react-html-parser';
+import Creator from '../Creator/Creator.js'
+
 
 class List extends React.Component {
+    state = {
+        columns: this.props.columns || [],
+      }
     static propTypes = {
         title: PropTypes.node.isRequired,
-        children: PropTypes.node,
-        img: PropTypes.string.isRequired,
+        image: PropTypes.string,
+        description: PropTypes.node,
+        columns: PropTypes.array,
     }
     static defaultProps = {
-        children: <p>I can do all the things!!!</p>
+        description: settings.defaultListDescription,
     }
+    addColumn(title){
+        this.setState(state => (
+          {
+            columns: [
+              ...state.columns,
+              {
+                key: state.columns.length ? state.columns[state.columns.length-1].key+1 : 0,
+                title,
+                icon: 'list-alt',
+                cards: []
+              }
+            ]
+          }
+        ));
+      }
+      
     render() {
         return (
         <section className={styles.component}>
-            <h2><Hero titleText={this.props.title} image={this.props.img}/></h2>
+            <h2><Hero titleText={this.props.title} image={this.props.image}/></h2>
             <div className={styles.description}>
-                {this.props.children}
+                {ReactHtmlParser(this.props.description)}
             </div>
             <div className={styles.columns}>
-              <Column text={'Coffee'}/>
-              <Column text={'Sleep'}/>
-              <Column text={'Read'}/>
+                {this.state.columns.map(({key, ...columnProps}) => (<Column key={key} {...columnProps}/>))}
+            </div>
+            <div className={styles.creator}>
+                <Creator text={settings.columnCreatorText} action={title => this.addColumn(title)}/>
             </div>
         </section>
         )
