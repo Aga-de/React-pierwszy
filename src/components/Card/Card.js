@@ -9,9 +9,10 @@ class Card extends React.Component {
       title: PropTypes.string, 
     }
     render(){
+      const {title} = this.props;
       return (
         <section className={styles.component}>
-          <div>{ReactHtmlParser(this.props.title)}</div>
+          <div>{ReactHtmlParser(title)}</div>
         </section>
       );
     }
