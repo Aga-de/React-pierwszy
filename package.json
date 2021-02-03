@@ -6,9 +6,9 @@
   "scripts": {
     "lint": "eslint src/",
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "server": "http-server dist"
   },
- 
   "lint-staged": {
     "src/**/*.js": "eslint"
   },
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "http-server": "^0.12.3",
     "husky": "^4.3.8",
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
