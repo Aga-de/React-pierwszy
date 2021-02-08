@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import List from '../List/ListContainer.js';
 import Search from '../Search/SearchContainer';
 import {DragDropContext} from 'react-beautiful-dnd';
-//import {pageContents, listData} from '../../data/dataStore';
+
 
 class App extends React.Component {
   static propTypes = {
