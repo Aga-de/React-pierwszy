@@ -12,6 +12,9 @@ export const settings = {
   },
   defaultListDescription: '<p>I can do all the things!!!</p>',
   defaultColumnIcon: 'list-alt',
+  header: {
+    icon: 'coffee',
+  },
 };
 
 export const pageContents = {
@@ -70,6 +73,20 @@ export const listData = {
       ],
     },
   ],
+};
+
+export const info = {
+  title: 'Things to do <sup>soon!</sup>',
+  image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png', 
+  name: 'Info',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+};
+
+export const faq = {
+  title: 'Things to do <sup>soon!</sup>',
+  image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+  name: 'FAQ',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 };
 
 const lists = [
@@ -146,6 +163,7 @@ const cards = [
     index: 1,
   },
 ];
+
 
 const initialStoreData = {
   app: {...pageContents},
