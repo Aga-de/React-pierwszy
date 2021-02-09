@@ -15,6 +15,7 @@ class Column extends React.Component {
       cards: PropTypes.array,
       addCard: PropTypes.func,
       id: PropTypes.string,
+      index: PropTypes.number,
     };
 
     static defaultProps = {
@@ -37,7 +38,7 @@ class Column extends React.Component {
                 ref={provided.innerRef}
               >
                 {cards.map(cardData => (
-                  <Card key={cardData.id} {...cardData} />
+                  <Card key={cardData.id} {...cardData}/>
                 ))}
                 {provided.placeholder}
               </div>
