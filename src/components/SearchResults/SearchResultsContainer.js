@@ -6,6 +6,7 @@ import {getCardsFromList} from '../../redux/cardsRedux';
 
 const mapStateToProps = (state, props) => {
   const searchString = props.match.params.id;
+  console.log('searchString:', searchString);
   return {
     cards: getCardsFromList(state, searchString),
   };

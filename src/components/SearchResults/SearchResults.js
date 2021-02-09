@@ -2,10 +2,8 @@ import React from 'react';
 import styles from './SearchResults.scss';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card.js';
-import { Link } from 'react-router-dom';
-import {Droppable, DragDropContext} from 'react-beautiful-dnd';
-import { settings } from '../../data/dataStore';
-import Container from '../Container/Container';
+import {Link} from 'react-router-dom';
+import {settings} from '../../data/dataStore';
 import Icon from '../Icon/Icon';
 
 class SearchResults extends React.Component {
@@ -14,7 +12,6 @@ class SearchResults extends React.Component {
     title: PropTypes.string,
     icon: PropTypes.string,
     cards: PropTypes.array,
-    id: PropTypes.string,
   }
 
   static defaultProps = {
@@ -23,41 +20,26 @@ class SearchResults extends React.Component {
   };
 
   render() {
-    const {title, icon, cards, id} = this.props;
+    const {title, icon, cards} = this.props;
     return (
-      <DragDropContext>
-        <Container>
-          <section className={styles.component}>
-            <h3 className={styles.title}>
-              <span className={styles.icon}>
-                <Icon name={icon}/>
-              </span>
-              {title}
-            </h3>
-            <Droppable droppableId={id}>
-              {provided => (
-                <div
-                  className={styles.cards}
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                >
-                  {cards.map((cardData, index) => (
-                    <>
-                      <div key={cardData.id} className={styles.wrapper}>
-                        <Card key={ cardData.id }{...cardData } index={index} />
-                        <Link className={styles.link} to={`/list/${cardData.listId}`}>
-                          <p>Go to the list!</p>
-                        </Link>
-                      </div>
-                    </>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </section>
-        </Container>
-      </DragDropContext>
+      <section className={styles.component}>
+        <h3 className={styles.title}>
+          <span className={styles.icon}>
+            <Icon name={icon}/>
+          </span>
+          {title}
+        </h3>
+        <div className={styles.cards}>
+          {cards.map(cardData => 
+            <div key={cardData.id}>
+              <Card key={cardData.id}{...cardData}/>
+              <Link className={styles.link} to={`/list/${cardData.listId}`}>
+                <p>Go to the list!</p>
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
     );
   }
 }
